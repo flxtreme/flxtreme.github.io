@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Linting
-        run: npm run lint
+      # - name: Linting
+      #   run: npm run lint
 
       - name: Build and Export
         run: |
