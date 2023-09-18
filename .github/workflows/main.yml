@@ -30,3 +30,4 @@ jobs:
         run: |
           npm run build
           npx gh-pages -d out -u "flxtreme <flxrzjr@gmail.com>" -e $GH_TOKEN
+          
