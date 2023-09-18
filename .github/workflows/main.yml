@@ -18,20 +18,13 @@ jobs:
         with:
           node-version: 14
 
-      - name: Set working directory
-        run: |
-          mkdir -p /home/runner/work/flxtreme.github.io
-          cd /home/runner/work/flxtreme.github.io
-
       - name: Install dependencies
         run: npm install
 
       - name: Linting
-        working-directory: /home/runner/work/flxtreme.github.io
         run: npm run lint
 
       - name: Build and Export
-        working-directory: /home/runner/work/flxtreme.github.io
         run: |
           npm run export
           npm run deploy
