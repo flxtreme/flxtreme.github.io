@@ -30,6 +30,8 @@ jobs:
         run: npm run lint
 
       - name: Build and Deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npm run build
-          npm run deploy
+          npx gh-pages -d out -u "flxtreme" -e $GH_TOKEN
