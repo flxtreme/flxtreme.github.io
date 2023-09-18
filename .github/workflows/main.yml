@@ -31,5 +31,5 @@ jobs:
 
       - name: Build and Export
         run: |
-          npm run export
+          npm run build
           npm run deploy
