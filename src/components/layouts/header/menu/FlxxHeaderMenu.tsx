@@ -55,7 +55,6 @@ export const FlxxHeaderMenuItem = ( props: FlxxHeaderMenuItemProps ) => {
 
   const handleTouchStart = (e: TouchEvent) => {
     const touchStartY = e.touches[0].clientY;
-    console.log(touchStartY);
     setTouchStartY(touchStartY);
   };
   
@@ -66,7 +65,7 @@ export const FlxxHeaderMenuItem = ( props: FlxxHeaderMenuItemProps ) => {
     handleScroll(delta, 100);
   }
 
-  const handleSetCurrentSection = ( currentSection: string, delay: number = 500 ) => {
+  const handleSetCurrentSection = ( currentSection: string, delay: number = 800 ) => {
     if ( !settingSection ) {
       setSettingSection(true);
       setTimeout(() => {

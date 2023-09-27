@@ -17,13 +17,13 @@ const FlxxHeader = ( props: FlxxHeaderProps ) => {
         <div className="flex-1 flex items-center justify-end">
           <FlxxHeaderMenu id="header-menu">
             <FlxxHeaderMenuItem scrollToTarget="section-1">
-              One
+              Me
             </FlxxHeaderMenuItem>
             <FlxxHeaderMenuItem scrollToTarget="section-2">
-              Two
+              Experience
             </FlxxHeaderMenuItem>
             <FlxxHeaderMenuItem scrollToTarget="section-3">
-              Three
+              Skills
             </FlxxHeaderMenuItem>
           </FlxxHeaderMenu>
         </div>

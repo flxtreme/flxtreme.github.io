@@ -12,8 +12,8 @@ const FlxLayout = ( props: FlxLayoutProps ) => {
   return(
     <>
       <FlxxHeader title={title} />
-      <div id="content" className="content overflow-hidden h-screen" data-current="section-1">
-        <main id="main">
+      <div id="content" className="particle-js content h-screen overflow-hidden" data-current="section-1">
+        <main id="main" className="relative z-[2]">
           {children}
         </main>
       </div>

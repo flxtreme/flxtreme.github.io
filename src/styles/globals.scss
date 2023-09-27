@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -31,6 +33,19 @@
   @apply select-none;
 }
 
+body {
+  @apply font-lead;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading;
+}
+
 .container {
   @apply max-w-7xl w-full px-4 mx-auto;
 }
@@ -41,20 +56,30 @@
 
 .section {
   @apply w-full h-screen relative py-20;
+  max-height: -webkit-fill-available;
+}
+
+.particles {
+  @apply fixed top-0 left-0 right-0 bottom-0 z-0 w-full h-full;
 }
 
 .hero {
-  @apply fixed w-[480px] -right-[480px] transition-all duration-500;
+  @apply fixed w-[480px] -left-[480px] transition-all duration-500 overflow-hidden flex items-center justify-center;
+  border-radius: 64% 36% 56% 44% / 36% 34% 66% 64%;
+  img {
+    @apply w-full
+  }
 }
 
 #content {
-  @apply transition-all duration-300;
+  @apply transition-all duration-300 h-screen;
+  max-height: -webkit-fill-available;
 
   &[data-current="section-1"] {
     @apply bg-red-500;
 
     .hero {
-      @apply right-[200px];
+      @apply left-[10%];
     }
   }
 
