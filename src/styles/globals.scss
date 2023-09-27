@@ -26,3 +26,43 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+* {
+  @apply select-none;
+}
+
+.container {
+  @apply max-w-7xl w-full px-4 mx-auto;
+}
+
+.animated {
+  @apply transition-all duration-200;
+}
+
+.section {
+  @apply w-full h-screen relative py-20;
+}
+
+.hero {
+  @apply fixed w-[480px] -right-[480px] transition-all duration-500;
+}
+
+#content {
+  @apply transition-all duration-300;
+
+  &[data-current="section-1"] {
+    @apply bg-red-500;
+
+    .hero {
+      @apply right-[200px];
+    }
+  }
+
+  &[data-current="section-2"] {
+    @apply bg-orange-500;
+  }
+
+  &[data-current="section-3"] {
+    @apply bg-blue-500;
+  }
+}

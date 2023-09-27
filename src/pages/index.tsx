@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { useRouter } from 'next/router'
+import FlxxLAyout from '@/components/layouts/FlxxLayout';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -8,48 +8,26 @@ export default function Home() {
 
   const router = useRouter();
 
-  const goToTest = () => {
-    void router.push('/test');
-  }
-
   return (
-    <main className="bg-[url('/images/bg.jpg')] flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="bg-white flex flex-col items-center justify-center w-full max-w-xl min-h-[280px] bg-opacity-20 backdrop-blur-md rounded-lg p-6 shadow-lg border-4 border-white border-opacity-10">
-        <h1 className="text-2xl font-semibold text-white mb-4">Test Glass</h1>
-        <div className='grid grid-cols-3 gap-4'>
-          <div>
-            <div onClick={goToTest} className='rounded text-white flex items-center flex-col justify-center h-28 w-28 border-2 border-white border-opacity-20'>
-              <span className='material-icons'>bookmark</span>
-              <h3 className='mt-3'>Test</h3>
-            </div>
-          </div>
-          <div>
-            <div className='rounded h-28 w-28 border-2 border-white border-opacity-20'>
-
-            </div>
-          </div>
-          <div>
-            <div className='rounded h-28 w-28 border-2 border-white border-opacity-20'>
-
-            </div>
-          </div>
-          <div>
-            <div className='rounded h-28 w-28 border-2 border-white border-opacity-20'>
-
-            </div>
-          </div>
-          <div>
-            <div className='rounded h-28 w-28 border-2 border-white border-opacity-20'>
-
-            </div>
-          </div>
-          <div>
-            <div className='rounded h-28 w-28 border-2 border-white border-opacity-20'>
-
-            </div>
+    <FlxxLAyout title='Test'>
+      <section className='section' id="section-1">
+        <div className='container h-full flex items-center justify-center'>
+          <h3 className='text-4xl font-bold text-white'>About</h3>
+          <div className='hero'>
+            <img src="images/felix.png" />
           </div>
         </div>
-      </div>
-    </main>
+      </section>
+      <section className='section' id="section-2">
+        <div className='container h-full flex items-center justify-center'>
+          <h3 className='text-4xl font-bold text-white'>Experience</h3>
+        </div>
+      </section>
+      <section className='section' id="section-3">
+        <div className='container h-full flex items-center justify-center'>
+          <h3 className='text-4xl font-bold text-white'>Skills</h3>
+        </div>
+      </section>
+    </FlxxLAyout>
   )
 }
