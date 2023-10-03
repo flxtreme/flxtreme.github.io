@@ -10,14 +10,14 @@ export default function Home() {
 
 
   const handleMailTo = () => {
-    router.push('mailto:flxrzjr@gmail.com?subject=Welcome');
+    router.push('mailto:flxrzjr@gmail.com?subject=');
   }
 
   return (
     <FlxxLAyout title='felixruz'>
-      <section className='py-20 px-4 h-screen'>
+      <section className='py-20 h-auto md:h-screen'>
         <div className='container h-full'>
-          <div className='flex flex-col lg:flex-row items-center h-full gap-16'>
+          <div className='flex flex-col lg:flex-row items-center h-full gap-10 md:gap-16'>
             <div>
               <div className='hero-img'>
                 <img src="/images/felix.png" className='w-full' />
