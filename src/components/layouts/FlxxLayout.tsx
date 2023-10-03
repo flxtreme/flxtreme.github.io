@@ -10,14 +10,14 @@ const FlxLayout = ( props: FlxLayoutProps ) => {
   const { title, children } = props;
 
   return(
-    <>
+    <div id="flxx-layout">
       <FlxxHeader title={title} />
-      <div id="content" className="particle-js content h-screen overflow-hidden" data-current="section-1">
-        <main id="main" className="relative z-[2]">
+      <div id="content" className="content h-screen overflow-hidden">
+        <main id="main" className="main">
           {children}
         </main>
       </div>
-    </>
+    </div>
   )
 }
 

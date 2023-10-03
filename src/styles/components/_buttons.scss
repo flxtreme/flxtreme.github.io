@@ -1,0 +1,21 @@
+button {
+  @apply min-h-[48px] px-4 bg-slate-600 text-white min-w-[128px] flex items-center justify-center gap-2 transition-all duration-200 text-base;
+
+  &:not(:disabled) {
+    &:hover {
+      @apply brightness-110;
+    }
+  
+    &:active {
+      @apply translate-y-[1px] brightness-95;
+    }
+  }
+
+  &:disabled {
+    @apply grayscale opacity-50 cursor-not-allowed;
+  }
+
+  &.alt {
+    @apply bg-orange-400;
+  }
+}

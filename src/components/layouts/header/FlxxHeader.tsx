@@ -9,23 +9,23 @@ const FlxxHeader = ( props: FlxxHeaderProps ) => {
   const { title } = props;
 
   return(
-    <header id="header" className="header z-10 fixed top-0 left-0 right-0">
+    <header id="header" className="header">
       <div className="container h-16 flex items-center">
-        <div className="text-lg font-semibold">
-          {title}
+        <div>
+          <h3 className="font-bold tracking-widest text-orange-400">{title}</h3>
         </div>
         <div className="flex-1 flex items-center justify-end">
-          <FlxxHeaderMenu id="header-menu">
-            <FlxxHeaderMenuItem scrollToTarget="section-1">
+          {/* <FlxxHeaderMenu id="header-menu">
+            <FlxxHeaderMenuItem>
               Me
             </FlxxHeaderMenuItem>
-            <FlxxHeaderMenuItem scrollToTarget="section-2">
+            <FlxxHeaderMenuItem disabled={true}>
               Experience
             </FlxxHeaderMenuItem>
-            <FlxxHeaderMenuItem scrollToTarget="section-3">
-              Skills
+            <FlxxHeaderMenuItem disabled={true}>
+              Contact
             </FlxxHeaderMenuItem>
-          </FlxxHeaderMenu>
+          </FlxxHeaderMenu> */}
         </div>
       </div>
     </header>
