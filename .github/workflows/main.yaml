@@ -1,6 +1,5 @@
 name: Build and Deploy Script
 
-
 on:
   push:
     branches:
@@ -26,6 +25,7 @@ jobs:
       run: npm run build:github
 
     - name: Deploy to GitHub Pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run deploy
+      env:
+        CI: true
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
