@@ -4,6 +4,7 @@ import { RouteNames } from './constants/enums';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { env } from 'src/envs/env';
 
 const routes: Routes = [
   { path: '', redirectTo: RouteNames.HOME, pathMatch: 'full' },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: '**', component: NotFoundComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: env.useHash })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
