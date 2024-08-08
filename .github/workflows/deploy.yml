@@ -22,8 +22,13 @@ jobs:
     - name: Build project
       run: npm run build:github
 
+    - name: Setup user
+      run: |
+        git config --global user.email "${{ secrets.EMAIL }}"
+        git config --global user.name "${{ secrets.NAME }}"
+
     - name: Deploy
       run: npm run deploy
       env:
         CI: true
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN}}
