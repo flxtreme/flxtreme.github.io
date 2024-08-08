@@ -28,7 +28,9 @@ jobs:
         git config --global user.name "${{ secrets.NAME }}"
 
     - name: Deploy
-      run: npm run deploy
       env:
         CI: true
         GH_TOKEN: ${{ secrets.GH_TOKEN}}
+      run: |
+        npx gh-pages -d docs -r https://${GH_TOKEN}@github.com/${{ github.repository }}.git
+      
