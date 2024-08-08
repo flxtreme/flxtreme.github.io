@@ -1,0 +1,33 @@
+name: Build and Deploy Script
+
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Adding Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 20
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build App
+      run: npm run build:prd
+
+    - name: Deploy to gh pages
+      run: |
+        npx angular-cli-ghpages --dir=dist/flxtreme.github.io
+      env:
+        CI: true
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
