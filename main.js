@@ -11,13 +11,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _constants_enums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/enums */ 5774);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login/login.component */ 8458);
 /* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./error/error.component */ 9983);
 /* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./not-found/not-found.component */ 1142);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _flxtremee_home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./flxtremee/home/home.component */ 9818);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+
 
 
 
@@ -27,12 +29,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [{
-  path: '',
-  redirectTo: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.HOME,
-  pathMatch: 'full'
-}, {
-  path: '',
+  path: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.ROOT,
+  component: _flxtremee_home_home_component__WEBPACK_IMPORTED_MODULE_4__.HomeComponent,
   loadChildren: () => Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ./flxtremee/flxtremee.module */ 7377)).then(app => app.FlxtremeeModule)
+}, {
+  path: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.HOME,
+  component: _flxtremee_home_home_component__WEBPACK_IMPORTED_MODULE_4__.HomeComponent
 }, {
   path: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.LOGIN,
   component: _login_login_component__WEBPACK_IMPORTED_MODULE_1__.LoginComponent
@@ -47,21 +49,21 @@ class AppRoutingModule {
   static #_ = this.ɵfac = function AppRoutingModule_Factory(t) {
     return new (t || AppRoutingModule)();
   };
-  static #_2 = this.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({
+  static #_2 = this.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineNgModule"]({
     type: AppRoutingModule
   });
-  static #_3 = this.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({
+  static #_3 = this.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector"]({
     providers: [{
-      provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__.LocationStrategy,
-      useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__.HashLocationStrategy
+      provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__.LocationStrategy,
+      useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__.HashLocationStrategy
     }],
-    imports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule.forRoot(routes), _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule]
+    imports: [_angular_router__WEBPACK_IMPORTED_MODULE_7__.RouterModule.forRoot(routes), _angular_router__WEBPACK_IMPORTED_MODULE_7__.RouterModule]
   });
 }
 (function () {
-  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AppRoutingModule, {
-    imports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule],
-    exports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule]
+  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](AppRoutingModule, {
+    imports: [_angular_router__WEBPACK_IMPORTED_MODULE_7__.RouterModule],
+    exports: [_angular_router__WEBPACK_IMPORTED_MODULE_7__.RouterModule]
   });
 })();
 
@@ -236,9 +238,9 @@ const routes = [{
   path: '',
   component: _flxtremee_component__WEBPACK_IMPORTED_MODULE_2__.FlxtremeeComponent,
   children: [{
-    path: '',
-    redirectTo: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.HOME,
-    pathMatch: 'full'
+    path: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.ROOT,
+    component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__.HomeComponent,
+    canActivate: []
   }, {
     path: _constants_enums__WEBPACK_IMPORTED_MODULE_0__.RouteNames.HOME,
     component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__.HomeComponent,
