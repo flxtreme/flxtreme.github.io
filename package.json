@@ -9,7 +9,8 @@
     "build:prd": "ng build --configuration=production",
     "build:github": "ng build --configuration=production --output-path docs --base-href /flxtreme.github.io/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "gh-pages -d docs"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +34,7 @@
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "gh-pages": "^6.1.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
