@@ -2,14 +2,14 @@
 
 import { useProjects } from "@/app/(shared)/hooks/useProjects";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiEye, FiEyeOff, FiLock } from "react-icons/fi";
 import Slider, { Settings } from "react-slick";
 
 export default function HomeXP() {
   const { projects, showPrivate, setShowPrivate } = useProjects();
   const sliderRef = useRef<Slider>(null);
-  const [ready, setReady] = useState(false); // trigger re-render on mount
+  const [isClient, setIsClient] = useState(false); // only render on client
 
   const settings: Settings = {
     dots: false,
@@ -24,13 +24,12 @@ export default function HomeXP() {
     adaptiveHeight: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
   };
 
-  // Force recalculation on mount (fixes mobile issue)
   useEffect(() => {
-    setReady(true);
+    setIsClient(true); // now window.innerWidth is available
   }, []);
 
   // Optional: reset slider on resize
@@ -73,7 +72,8 @@ export default function HomeXP() {
           </div>
         </div>
 
-        {ready && (
+        {/* Only render slider on client */}
+        {isClient && (
           <Slider {...settings} ref={sliderRef} className="m-0!">
             {projects.map((project, index) => (
               <div key={index} className="p-2 xl:p-4">
