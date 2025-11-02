@@ -1,6 +1,6 @@
 import LiquidEther from "@/app/(shared)/components/reactbits/LiquidEther";
 import { Button } from "@/app/(shared)/components/ui/Button";
-import { IoCodeOutline, IoDownloadOutline, IoMailOutline } from "react-icons/io5";
+import { IoChatbubbleEllipsesOutline, IoCodeOutline, IoDownloadOutline, IoMailOutline } from "react-icons/io5";
 
 export default function HomeHeroBanner() {
 
@@ -28,7 +28,7 @@ export default function HomeHeroBanner() {
             className="flex items-center gap-2"
           >
             <IoCodeOutline size={16} />
-            <span>Which tech?</span>
+            <span>My Tech Stack</span>
           </Button>
 
           <Button
@@ -37,8 +37,8 @@ export default function HomeHeroBanner() {
             size="large"
             className="flex items-center gap-2"
           >
-            <IoMailOutline />
-            <span>Hire Me</span>
+            <IoChatbubbleEllipsesOutline size={16} />
+            <span>Let's Talk</span>
           </Button>
         </div>
 
