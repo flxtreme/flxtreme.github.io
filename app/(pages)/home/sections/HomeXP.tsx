@@ -2,43 +2,21 @@
 
 import { useProjects } from "@/app/(shared)/hooks/useProjects";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 import { FiEye, FiEyeOff, FiLock } from "react-icons/fi";
-import Slider, { Settings } from "react-slick";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 export default function HomeXP() {
   const { projects, showPrivate, setShowPrivate } = useProjects();
 
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  // Track window width to force slider re-render on mobile
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Slider settings
-  const settings: Settings = {
-    dots: false,
-    autoplay: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    arrows: false,
-    pauseOnHover: true,
-    adaptiveHeight: false,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-  };
-
-  // Render nothing until windowWidth is known (client-only)
-  if (windowWidth === 0) return null;
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: { perView: 3, spacing: 16 },
+    breakpoints: {
+      "(max-width: 1024px)": { slides: { perView: 2, spacing: 12 } },
+      "(max-width: 768px)": { slides: { perView: 1, spacing: 8 } },
+    },
+  });
 
   return (
     <section id="projects" className="relative">
@@ -73,10 +51,9 @@ export default function HomeXP() {
           </div>
         </div>
 
-        {/* Key trick: use windowWidth as key to force re-render */}
-        <Slider key={windowWidth} {...settings} className="m-0!">
+        <div ref={sliderRef} className="keen-slider">
           {projects.map((project, index) => (
-            <div key={index} className="p-2 xl:p-4">
+            <div key={index} className="keen-slider__slide p-2 xl:p-4">
               <div
                 className={cn(
                   "relative w-full h-56 lg:h-60 xl:h-80 bg-slate-100 dark:bg-slate-800 overflow-hidden group transition-all duration-500 rounded-2xl",
@@ -143,7 +120,7 @@ export default function HomeXP() {
               </div>
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
     </section>
   );
