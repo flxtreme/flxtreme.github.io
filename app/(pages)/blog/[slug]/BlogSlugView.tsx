@@ -30,7 +30,7 @@ export default function BlogSlugView( {slug}: { slug: string} ) {
 
   return (
     <div className="relative min-h-screen">
-      <div className={cn("container py-12 lg:py-20")}>
+      <div className={cn("container container-height px-6")}>
         <button
           onClick={() => router.push("/blog")}
           className="flex items-center gap-2 mb-8 text-sm font-medium text-orange-400 dark:text-purple-400 hover:opacity-70 transition-opacity"
@@ -47,14 +47,14 @@ export default function BlogSlugView( {slug}: { slug: string} ) {
             <LuCalendar className="text-base" />
             <time>{blog.date}</time>
           </div>
-          <p className="text-lg opacity-70 mt-6 max-w-3xl">
+          <p className="text-lg opacity-70 mt-6 ">
             {blog.excerpt}
           </p>
         </header>
 
         <hr className="my-8 border-slate-300 dark:border-slate-700" />
 
-        <div className="max-w-3xl">
+        <div>
           <MarkdownBlog mdPath={blog.content} />
         </div>
 
