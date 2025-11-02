@@ -3,6 +3,7 @@ import { Lato, Poppins } from "next/font/google";
 import "./globals.css"
 import Layout from "./(shared)/components/layout/Layout";
 import { ThemeProvider } from "./(shared)/contexts/ThemeProvider";
+import Head from "next/head";
 
 const geistSans = Poppins({
   variable: '--font-poppins',
@@ -50,6 +51,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <title>Felix Dev</title>
+        <meta name="description" content="Ako Felix" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Felix Dev" />
+        <meta property="og:description" content="Ako Felix" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://flxtremee.com" />
+        <meta property="og:image" content="https://flxtreme.github.io/preview/preview-portfolio.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Felix Dev" />
+        <meta name="twitter:description" content="Ako Felix" />
+        <meta name="twitter:image" content="https://flxtreme.github.io/preview/preview-portfolio.png" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-svh overflow-hidden`}
       >
