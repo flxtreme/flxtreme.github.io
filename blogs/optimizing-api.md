@@ -234,7 +234,7 @@ app.get('/api/users/:id', async (req, res) => {
 1. **Use Promise.all** for independent database queries or API calls to run them in parallel
 2. **Use Promise.allSettled** when some failures are acceptable
 3. **Preload configurations** on server startup to avoid repeated database queries
-4. **Cache frequently accessed data** with node-cache and appropriate TTLs
+4. **Cache frequently accessed data** with node-cache or other caching tools
 5. **Implement multi-level caching** for configs (preloaded) and runtime data (cached on-demand)
 6. **Monitor cache hit rates** to ensure your caching strategy is effective
 
