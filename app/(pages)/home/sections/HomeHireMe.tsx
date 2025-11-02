@@ -29,8 +29,8 @@ export default function HomeHireMe() {
   ];
 
   return (
-    <section id="hire-me" className="relative py-12 md:py-20">
-      <div className="container flex flex-col items-center justify-center">
+    <section id="hire-me" className="relative">
+      <div className="container container-height flex flex-col items-center justify-center">
         <div className="text-center mb-10 md:mb-14 px-4">
           <h2 className="font-poppins text-3xl md:text-4xl xl:text-5xl font-medium mb-3 text-orange-300 dark:text-purple-400">
             Ready to Work Together?
