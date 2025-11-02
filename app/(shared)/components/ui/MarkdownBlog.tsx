@@ -13,7 +13,8 @@ interface MarkdownBlogProps {
 /**
  * MarkdownBlog
  * -------------------------
- * Renders a markdown file as a styled blog post with syntax highlighting and line numbers.
+ * Renders a markdown file as a styled blog post with syntax highlighting,
+ * line numbers, and copy-to-clipboard support for each code block.
  */
 export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
   const [content, setContent] = useState<string>("");
@@ -44,10 +45,10 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
     fetchMarkdown();
   }, [mdPath]);
 
+  /** Parse markdown content into styled HTML */
   const parseMarkdown = (md: string): string => {
     let html = md;
 
-    // Step 1: Extract and protect code blocks with syntax highlighting + line numbers
     const codeBlocks: string[] = [];
     html = html.replace(/```([\s\S]*?)```/gm, (match) => {
       const inner = match.slice(3, -3);
@@ -57,80 +58,51 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
 
       const highlighted = hljs.highlightAuto(code, lang ? [lang] : undefined).value;
 
-      // Add line numbers
       const numbered = highlighted
         .split(/\n/)
         .map(
           (line, i) =>
-            `<div class=\"table-row\"><span class=\"table-cell text-right select-none pr-4 text-slate-500\">${
+            `<div class="table-row"><span class="table-cell text-right select-none pr-4 text-slate-500 dark:text-slate-400">${
               i + 1
-            }</span><span class=\"table-cell\">${line || "&nbsp;"}</span></div>`
+            }</span><span class="table-cell">${line || "&nbsp;"}</span></div>`
         )
         .join("");
 
-      const block = `<pre class=\" border-l-4 border-gray-400 dark:border-purple-400 overflow-x-auto my-6\"><code class=\"hljs language-${lang} bg-slate-200! dark:bg-slate-800! text-slate-600! dark:text-slate-100! table border-separate border-spacing-x-2\">${numbered}</code></pre>`;
+      // keep pre/code classes EXACTLY as user saved
+      const block = `
+      <div class="code-block-wrapper relative group">
+        <button class="copy-btn absolute top-2 right-2 text-xs bg-slate-700/80 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+          Copy
+        </button>
+        <pre class="border-l-4 shadow-md border-gray-400 dark:border-purple-400 overflow-x-auto my-6"><code class="hljs language-${lang} bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-100 table border-separate border-spacing-x-2">${numbered}</code></pre>
+      </div>`;
       codeBlocks.push(block);
       return `\n___CODE_BLOCK_${codeBlocks.length - 1}___\n`;
     });
 
-    // Step 2: Extract and protect inline code
+    // Inline code, headers, lists, etc. remain unchanged
     const inlineCodes: string[] = [];
     html = html.replace(/`([^`\n]+)`/g, (match, code) => {
-      const escapedCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-      const inline = `<code class=\"bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm font-mono\">${escapedCode}</code>`;
+      const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      const inline = `<code class="bg-slate-200 shadow-sm dark:bg-slate-800 px-1 py-0.5 rounded text-sm font-mono text-orange-600 dark:text-purple-400">${escaped}</code>`;
       inlineCodes.push(inline);
       return `___INLINE_CODE_${inlineCodes.length - 1}___`;
     });
 
-    // Step 3: Headers
     html = html.replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold mt-8 mb-4">$1</h3>');
     html = html.replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold mt-10 mb-5">$1</h2>');
     html = html.replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold mt-12 mb-6">$1</h1>');
-
-    // Step 4: Bold
     html = html.replace(/\*\*(.*?)\*\*/gim, '<strong class="font-semibold">$1</strong>');
-
-    // Step 5: Italic
     html = html.replace(/\*(.*?)\*/gim, '<em class="italic">$1</em>');
-
-    // Step 6: Images
-    html = html.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/gim,
-      '<img src="$2" alt="$1" class="max-w-full h-auto rounded-lg my-6 shadow-lg" />'
-    );
-
-    // Step 7: Links
-    html = html.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/gim,
-      '<a href="$2" class="text-orange-400 dark:text-purple-400 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>'
-    );
-
-    // Step 8: Blockquotes
-    html = html.replace(
-      /^> (.*$)/gim,
-      '<blockquote class="border-l-4 border-orange-400 dark:border-purple-400 pl-4 italic my-4 opacity-80">$1</blockquote>'
-    );
-
-    // Ordered lists
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" class="max-w-full h-auto rounded-lg my-6 shadow-lg" />');
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="text-orange-400 dark:text-purple-400 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>');
+    html = html.replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-orange-400 dark:border-purple-400 pl-4 italic my-4 opacity-80">$1</blockquote>');
     html = html.replace(/(^|\n)(\d+)\. (.*)/g, '$1<ol class="my-4 list-decimal ml-6"><li>$3</li></ol>');
-
-    // Unordered lists
     html = html.replace(/(^|\n)\* (.*)/g, '$1<ul class="my-4 list-disc ml-6"><li>$2</li></ul>');
-
-    // Merge adjacent list items
-    html = html
-      .replace(/<\/li>\s*<li>/g, '</li><li>')
-      .replace(/<\/ol>\s*<ol[^>]*>/g, '')
-      .replace(/<\/ul>\s*<ul[^>]*>/g, '');
-
-    // Horizontal rule
+    html = html.replace(/<\/li>\s*<li>/g, '</li><li>').replace(/<\/ol>\s*<ol[^>]*>/g, '').replace(/<\/ul>\s*<ul[^>]*>/g, '');
     html = html.replace(/^---$/gim, '<hr class="my-8 border-slate-300 dark:border-slate-700" />');
 
-    // Paragraphs
-    const lines = html.split('\n');
+    const lines = html.split("\n");
     const processed: string[] = [];
     let inParagraph = false;
 
@@ -138,24 +110,24 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
       const line = lines[i].trim();
       if (!line) {
         if (inParagraph) {
-          processed.push('</p>');
+          processed.push("</p>");
           inParagraph = false;
         }
         continue;
       }
 
       if (
-        line.startsWith('<h') ||
-        line.startsWith('<pre') ||
-        line.startsWith('<ul') ||
-        line.startsWith('<ol') ||
-        line.startsWith('<li') ||
-        line.startsWith('<hr') ||
-        line.startsWith('<blockquote') ||
-        line.startsWith('___CODE_BLOCK_')
+        line.startsWith("<h") ||
+        line.startsWith("<pre") ||
+        line.startsWith("<ul") ||
+        line.startsWith("<ol") ||
+        line.startsWith("<li") ||
+        line.startsWith("<hr") ||
+        line.startsWith("<blockquote") ||
+        line.startsWith("___CODE_BLOCK_")
       ) {
         if (inParagraph) {
-          processed.push('</p>');
+          processed.push("</p>");
           inParagraph = false;
         }
         processed.push(line);
@@ -168,16 +140,31 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
       }
     }
 
-    if (inParagraph) processed.push('</p>');
+    if (inParagraph) processed.push("</p>");
 
-    html = processed.join('\n');
-
-    // Restore inline code and blocks
+    html = processed.join("\n");
     html = html.replace(/___INLINE_CODE_(\d+)___/g, (_, i) => inlineCodes[i]);
     html = html.replace(/___CODE_BLOCK_(\d+)___/g, (_, i) => codeBlocks[i]);
-
     return html;
   };
+
+  /** Clipboard logic after render */
+  useEffect(() => {
+    const buttons = document.querySelectorAll(".copy-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const pre = btn.closest(".code-block-wrapper");
+        const code = pre?.querySelector("code")?.innerText ?? "";
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Copied!";
+          setTimeout(() => (btn.textContent = "Copy"), 2000);
+        } catch (e) {
+          console.error("Copy failed", e);
+        }
+      });
+    });
+  }, [content]);
 
   if (loading) {
     return (
