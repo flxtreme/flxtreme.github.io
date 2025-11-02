@@ -59,7 +59,7 @@ export default function RootLayout({
         <meta property="og:title" content="Felix Dev" />
         <meta property="og:description" content="Ako Felix" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://flxtremee.com" />
+        <meta property="og:url" content="https://flxtremee.github.io" />
         <meta property="og:image" content="https://flxtreme.github.io/preview/preview-portfolio.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
