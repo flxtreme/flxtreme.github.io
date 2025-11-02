@@ -2,9 +2,8 @@
 
 import { useProjects } from "@/app/(shared)/hooks/useProjects";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { FiEye, FiEyeOff, FiLock } from "react-icons/fi";
-import { IoWarning } from "react-icons/io5";
 import Slider, { Settings } from "react-slick";
 
 /**
@@ -13,7 +12,6 @@ import Slider, { Settings } from "react-slick";
  * Enhanced project showcase carousel with modern design
  */
 export default function HomeXP() {
-  const router = useRouter();
 
   const { projects, showPrivate, setShowPrivate } = useProjects();
 
@@ -29,10 +27,18 @@ export default function HomeXP() {
     pauseOnHover: true,
     adaptiveHeight: true,
     responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-      { breakpoint: 1280, settings: { slidesToShow: 2 } },
-    ],
+      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // tablets
+      { breakpoint: 600, settings: { slidesToShow: 1 } },  // phones
+    ]
   };
+
+  const sliderRef = useRef<Slider>(null);
+
+  useEffect(() => {
+    const resizeHandler = () => sliderRef.current?.slickGoTo(0);
+    window.addEventListener("resize", resizeHandler);
+    return () => window.removeEventListener("resize", resizeHandler);
+  }, []);
 
   return (
     <section id="projects" className="relative">
