@@ -29,6 +29,7 @@ import { useScrollProgress } from "@/app/(shared)/hooks/useScrollProgress";
 import LogoLoop from "@/app/(shared)/components/reactbits/LogoLoop";
 import { useRouter } from "next/navigation";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import ScrollingLogos from "@/app/(shared)/components/ui/ScrollingLogos";
 
 const techStack = [
   { Icon: SiAngular, label: "Angular", category: "Frontend" },
@@ -306,24 +307,16 @@ const FallbackGrid = () => (
         Yap! you're right. Here's what I work with.
       </p>
     </div>
-    <LogoLoop
-      className="mt-8 text-orange-400 dark:text-purple-400"
+    <ScrollingLogos 
       logos={techStack.map((a) => {
+        const Icon = a.Icon;
 
         return {
-          node: <a.Icon />,
+          icon: <Icon />,
           title: a.label,
         }
-      })}
-      speed={50}
-      direction="left"
-      logoHeight={64}
-      gap={64}
-      pauseOnHover
-      scaleOnHover
-      fadeOut
-      fadeOutColor={undefined}
-      ariaLabel="Stacks"
+      })} 
+      speed={2}
     />
   </section>
 );

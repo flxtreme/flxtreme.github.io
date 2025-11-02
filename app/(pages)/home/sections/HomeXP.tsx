@@ -5,11 +5,12 @@ import { cn } from "@/lib/utils";
 import { FiEye, FiEyeOff, FiLock } from "react-icons/fi";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useEffect } from "react";
 
 export default function HomeXP() {
   const { projects, showPrivate, setShowPrivate } = useProjects();
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: { perView: 3, spacing: 16 },
     breakpoints: {
@@ -18,13 +19,20 @@ export default function HomeXP() {
     },
   });
 
+  /** 🔄 Refresh slider when project list changes (toggle private) */
+  useEffect(() => {
+    if (slider && slider.current) {
+      slider.current.update(); // re-calculate slide sizes & count
+    }
+  }, [projects, slider]);
+
   return (
     <section id="projects" className="relative">
       <div className={cn("container-height px-0! flex flex-col justify-center items-stretch")}>
         <div className="container mb-8 px-6">
           <h1 className="title-text mb-4 lg:mb-6">Projects</h1>
           <p className="sub-desc-text max-w-2xl opacity-50">
-            Some of my featured works — internal tools, client apps, and experiments.
+            I can showcase some of my projects.
           </p>
 
           <div className="mt-6 text-base dark:text-slate-300 flex items-start justify-between gap-2">
@@ -57,7 +65,8 @@ export default function HomeXP() {
               <div
                 className={cn(
                   "relative w-full h-56 lg:h-60 xl:h-80 bg-slate-100 dark:bg-slate-800 overflow-hidden group transition-all duration-500 rounded-2xl",
-                  !project.private && "cursor-pointer"
+                  !project.private && "cursor-pointer",
+                  "border-0 dark:shadow-none shadow-sm dark:border-2 dark:border-neutral-800"
                 )}
               >
                 {project.private ? (
@@ -81,7 +90,7 @@ export default function HomeXP() {
                   </>
                 )}
 
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-all duration-500 flex flex-col justify-end p-5 text-white">
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-gray-500/40 dark:from-purple-900/60 dark:via-purple-900/20 to-transparent opacity-100 group-hover:opacity-0 transition-all duration-500 flex flex-col justify-end p-5 text-white">
                   {project.private && (
                     <div className="absolute right-4 top-4 px-3 py-1.5 bg-orange-500/90 dark:bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
                       <FiLock className="text-sm" />
@@ -89,9 +98,16 @@ export default function HomeXP() {
                     </div>
                   )}
 
-                  <h3 className="text-xl font-bold mb-2 tracking-tight drop-shadow-lg">{project.title}</h3>
+                  <h3
+                    onClick={() => project.url && window.open(project.url, "_blank")}
+                    className="text-xl font-bold mb-2 tracking-tight drop-shadow-lg"
+                  >
+                    {project.title}
+                  </h3>
 
-                  <p className="text-sm mb-4 opacity-90 line-clamp-2 leading-relaxed">{project.description}</p>
+                  <p className="text-sm mb-4 opacity-90 line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
 
                   {project.stacks && (
                     <div className="flex flex-wrap gap-1">

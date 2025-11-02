@@ -13,9 +13,9 @@ export interface FooterProps extends React.HTMLAttributes<HTMLElement> {}
 
 export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
   const socialLinks = [
-    { icon: <BsGithub size={20} />, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: <BsWhatsapp size={20} />, href: "https://wa.me/639503459931", label: "WhatsApp" },
-    { icon: <LuMail size={20} />, href: "mailto:flxrzjr@gmail.com", label: "Email" }
+    { icon: <BsGithub size={20} />, onClick: () => window.open("https://github.com/flxtreme", "_blank"), label: "GitHub" },
+    { icon: <BsWhatsapp size={20} />, onClick: () => window.open("https://wa.me/639503459931", "_blank"), label: "WhatsApp" },
+    { icon: <LuMail size={20} />, onClick: () => window.open("mailto:flxrzjr@gmail.com"), label: "Email" }
   ];
 
   const quickLinks = [
@@ -75,16 +75,15 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((social, index) => (
-                <a
+                <button
+                  onClick={social.onClick}
                   key={index}
-                  href={social.href}
-                  target={social.href.startsWith('mailto:') ? '_self' : '_blank'}
-                  rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  title={social.label}
                   aria-label={social.label}
                   className="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-purple-400 hover:border-orange-400 dark:hover:border-purple-400 hover:scale-110 transition-all duration-200"
                 >
                   {social.icon}
-                </a>
+                </button>
               ))}
             </div>
             <a
