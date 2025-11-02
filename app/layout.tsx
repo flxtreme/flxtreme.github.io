@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Felix Dev",
     description: "Ako Felix",
-    url: "https://flxtremee.com",
+    url: "https://flxtreme.github.io",
     siteName: "Felix Dev",
     images: [
       {
