@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-2:I[97367,["/flxtreme.github.io/_next/static/chunks/42879de7b8087bc9.js"],"OutletBoundary"]
+2:I[97367,["/_next/static/chunks/42879de7b8087bc9.js"],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"buildId":"MPcw_H3QnoYqT3MdhUwyL","rsc":["$","$1","c",{"children":[["$","div",null,{"children":["$","div",null,{"className":"container py-16 md:py-28 xl:min-h-[calc(100vh-5rem)] flex items-center justify-center flex-col gap-4 md:gap-6","children":["$","p",null,{"className":"sub-desc-text","children":"Not sure what to post here."}]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"vArSOlp67e9Vu23AH7w3H","rsc":["$","$1","c",{"children":[["$","div",null,{"children":["$","div",null,{"className":"container py-16 md:py-28 xl:min-h-[calc(100vh-5rem)] flex items-center justify-center flex-col gap-4 md:gap-6","children":["$","p",null,{"className":"sub-desc-text","children":"Not sure what to post here."}]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
 4:null
