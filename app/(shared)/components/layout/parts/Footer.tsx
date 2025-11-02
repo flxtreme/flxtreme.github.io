@@ -1,7 +1,7 @@
-import React from 'react';
 import { cn } from "@/app/(shared)/utils/";
-import { Mail, Github, Linkedin, Twitter, Heart, Code } from 'lucide-react';
-import { BsGithub, BsMailbox, BsWhatsapp } from 'react-icons/bs';
+import React from 'react';
+import { BsGithub, BsWhatsapp } from 'react-icons/bs';
+import { IoCodeOutline, IoHeart, IoMail } from "react-icons/io5";
 import { LuMail } from 'react-icons/lu';
 
 /**
@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
               I turn caffeine ☕ and code into clean, responsive apps. Available for part-time work—let's build something awesome together. 💻
             </p>
             <div className="flex items-center gap-2 text-sm opacity-70">
-              <Code size={16} className="text-orange-400 dark:text-purple-400" />
+              <IoCodeOutline size={16} className="text-orange-400 dark:text-purple-400" />
               <span>Built with Next.js & React</span>
             </div>
           </div>
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
               href="mailto:flxrzjr@gmail.com"
               className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 dark:text-purple-400 hover:underline"
             >
-              <Mail size={16} />
+              <IoMail size={16} />
               flxrzjr@gmail.com
             </a>
           </div>
@@ -105,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
             </p>
             <div className="flex items-center gap-1 text-sm opacity-70">
               <span>Made with</span>
-              <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" />
+              <IoHeart size={14} className="text-red-500 fill-red-500 animate-pulse" />
               <span>and lots of ☕</span>
             </div>
           </div>
