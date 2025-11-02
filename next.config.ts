@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/flxtreme.github.io'
+  basePath: '/'
 };
 
 export default nextConfig;
