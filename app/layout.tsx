@@ -18,7 +18,29 @@ const geistMono = Lato({
 
 export const metadata: Metadata = {
   title: "Felix Dev",
-  description: "Ako felix",
+  description: "Ako Felix",
+  openGraph: {
+    title: "Felix Dev",
+    description: "Ako Felix",
+    url: "https://flxtremee.com",
+    siteName: "Felix Dev",
+    images: [
+      {
+        url: "https://flxtreme.github.io/preview/preview-portfolio.png",
+        width: 1200,
+        height: 630,
+        alt: "Felix Dev Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Felix Dev",
+    description: "Ako Felix",
+    images: ["https://flxtreme.github.io/preview/preview-portfolio.png"],
+    creator: "@flxtremee",
+  },
 };
 
 export default function RootLayout({
