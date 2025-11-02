@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/flxtreme.github.io//_next/:path+",
+        "destination": "/flxtreme.github.io/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
