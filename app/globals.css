@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "keen-slider/keen-slider.min.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
