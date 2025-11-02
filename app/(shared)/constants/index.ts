@@ -5,8 +5,8 @@ import { IoBookOutline, IoCallOutline, IoChatbubbleEllipsesOutline, IoChatbubble
 
 
 export const NAV_ITEMS: NavType[] = [
-  { label: "Skills", href: "/#skills", icon: IoCodeOutline },
-  { label: "Projects", href: "/#projects", icon: IoLogoWebComponent },
-  { label: "Hire Me", href: "/#hire-me", icon: IoChatbubbleEllipsesOutline },
+  { label: "Skills", href: "#skills", icon: IoCodeOutline },
+  { label: "Projects", href: "#projects", icon: IoLogoWebComponent },
+  { label: "Hire Me", href: "#hire-me", icon: IoChatbubbleEllipsesOutline },
   { label: "My Blogs", href: "/blog", icon: IoBookOutline }
 ]

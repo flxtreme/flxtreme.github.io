@@ -27,6 +27,7 @@ export default function HomeXP() {
     swipeToSlide: true,
     arrows: false,
     pauseOnHover: true,
+    adaptiveHeight: true,
     responsive: [
       { breakpoint: 768, settings: { slidesToShow: 1 } },
       { breakpoint: 1280, settings: { slidesToShow: 2 } },
