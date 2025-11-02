@@ -90,7 +90,7 @@ export default function HomeXP() {
                   </>
                 )}
 
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-gray-500/40 dark:from-purple-900/60 dark:via-purple-900/20 to-transparent opacity-100 group-hover:opacity-0 transition-all duration-500 flex flex-col justify-end p-5 text-white">
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-gray-800/40 to-transparent opacity-100 group-hover:opacity-0 transition-all duration-500 flex flex-col justify-end p-5 text-white">
                   {project.private && (
                     <div className="absolute right-4 top-4 px-3 py-1.5 bg-orange-500/90 dark:bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
                       <FiLock className="text-sm" />
