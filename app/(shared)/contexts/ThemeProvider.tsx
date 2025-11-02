@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize + persist theme
   useEffect(() => {
-    const saved = (localStorage.getItem("theme") as Theme) || "light";
+    const saved = (localStorage.getItem("theme") as Theme) || "dark";
     setTheme(saved);
     document.documentElement.setAttribute("data-theme", saved);
   }, []);

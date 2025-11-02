@@ -124,7 +124,7 @@ const SkillCard = ({
       <div
         className={cn(
           "relative h-full w-full rounded-2xl p-6 flex flex-col justify-center items-center",
-          "bg-white/80 dark:bg-slate-900/80 shadow-xl shadow-black/5 dark:shadow-none",
+          "bg-white/80 dark:bg-slate-900/80 shadow-lg shadow-black/5 dark:shadow-none",
           "overflow-hidden transition-all duration-300 border-2 border-gray-10 dark:border-gray-100/20",
           "backdrop-blur-xl backdrop-saturate-150"
         )}
