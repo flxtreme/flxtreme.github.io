@@ -129,7 +129,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .replace(/[^\w\s-]/g, "") // remove non-word chars
         .trim()
         .replace(/\s+/g, "-"); // replace spaces with hyphens
-      return `<h3 id="${id}" class="text-2xl font-bold mt-8 mb-4 scroll-mt-24">${title}</h3>`;
+      return `<h3 id="${id}" class="font-poppins text-2xl font-bold mt-8 mb-4 scroll-mt-24">${title}</h3>`;
     });
 
     html = html.replace(/^## (.*$)/gim, (_, title) => {
@@ -137,7 +137,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .replace(/[^\w\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
-      return `<h2 id="${id}" class="text-3xl font-bold mt-10 mb-5 scroll-mt-24">${title}</h2>`;
+      return `<h2 id="${id}" class="font-poppins text-3xl font-bold mt-10 mb-5 scroll-mt-24">${title}</h2>`;
     });
 
     html = html.replace(/^# (.*$)/gim, (_, title) => {
@@ -145,7 +145,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .replace(/[^\w\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
-      return `<h1 id="${id}" class="text-4xl font-bold mt-12 mb-6 scroll-mt-24">${title}</h1>`;
+      return `<h1 id="${id}" class="font-poppins text-4xl font-bold mt-12 mb-6 scroll-mt-24">${title}</h1>`;
     });
     
     // Bold & Italic
@@ -276,20 +276,49 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
   /** Clipboard logic after render */
   useEffect(() => {
     const buttons = document.querySelectorAll(".copy-btn");
+
     buttons.forEach((btn) => {
       btn.addEventListener("click", async () => {
-        const pre = btn.closest(".code-block-wrapper");
-        const code = pre?.querySelector("code")?.innerText ?? "";
+        const wrapper = btn.closest(".code-block-wrapper");
+        const codeElement = wrapper?.querySelector("code");
+        if (!codeElement) return;
+
+        // Extract only the actual code cells (skip line numbers)
+        const codeLines = Array.from(codeElement.querySelectorAll(".table-row"))
+          .map((row) => {
+            const codeCell = row.querySelectorAll(".table-cell")[1];
+            return codeCell?.textContent?.trimEnd() ?? "";
+          })
+          // remove trailing blank lines but preserve inner ones
+          .filter((line, index, arr) => {
+            if (index === arr.length - 1 && line.trim() === "") return false;
+            return true;
+          });
+
+        const cleanCode = codeLines.join("\n").trimEnd();
+
         try {
-          await navigator.clipboard.writeText(code);
+          await navigator.clipboard.writeText(cleanCode);
           btn.textContent = "Copied!";
-          setTimeout(() => (btn.textContent = "Copy"), 2000);
+          btn.classList.add("bg-green-600");
+          setTimeout(() => {
+            btn.textContent = "Copy";
+            btn.classList.remove("bg-green-600");
+          }, 1500);
         } catch (e) {
           console.error("Copy failed", e);
         }
       });
     });
+
+    return () => {
+      buttons.forEach((btn) => {
+        btn.replaceWith(btn.cloneNode(true)); // clean up listeners
+      });
+    };
   }, [content]);
+
+
 
   if (loading) {
     return (
@@ -314,6 +343,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
   return (
     <article
       className={cn(
+        "font-lato",
         "prose prose-slate dark:prose-invert max-w-none",
         "prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-slate-100",
         "prose-p:text-slate-700 dark:prose-p:text-slate-300",
