@@ -10,7 +10,7 @@ When building backend APIs, performance optimization can dramatically improve yo
 └── [Preloading & Caching Configurations](#preloading-caching-configurations)  
           ├── [Preload + Cache](#preload-cache)  
           ├── [Server-Side Caching](#server-side-caching)  
-          ├── [Advanced: Multi-Level Caching Strategy](#advanced-multi-level-caching-strategy)  
+          ├── [Multi-Level Caching Strategy](#multi-level-caching-strategy)  
 └── [Key Takeaways](#key-takeaways)
 
 
@@ -177,7 +177,7 @@ async function getCachedUser(userId) {
 }
 ```
 
-### Advanced: Multi-Level Caching Strategy
+### Multi-Level Caching Strategy
 
 For high-performance applications, a **multi-level caching strategy** combines preloading static configurations (loaded once at startup) and runtime caching (for frequently accessed, dynamic data). This dual-layer approach minimizes database hits, reduces latency, and ensures faster, more consistent responses.
 
