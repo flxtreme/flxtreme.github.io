@@ -3,5 +3,5 @@
 3:I[97367,["/dev/_next/static/chunks/d16c3e07d84e98a8.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
 :HL["/dev/_next/static/chunks/b9ef641e76e3a351.css","style"]
-0:{"buildId":"7k3MKF9Lh0oMxHevUkjIa","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"optimizing-api"}],[["$","link","0",{"rel":"stylesheet","href":"/dev/_next/static/chunks/b9ef641e76e3a351.css","precedence":"next"}],["$","script","script-0",{"src":"/dev/_next/static/chunks/acc641ff6630f88c.js","async":true}],["$","script","script-1",{"src":"/dev/_next/static/chunks/caf3b3e9a71f54ed.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"BWjtgt0kktvqoKbZmaHM4","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"optimizing-api"}],[["$","link","0",{"rel":"stylesheet","href":"/dev/_next/static/chunks/b9ef641e76e3a351.css","precedence":"next"}],["$","script","script-0",{"src":"/dev/_next/static/chunks/acc641ff6630f88c.js","async":true}],["$","script","script-1",{"src":"/dev/_next/static/chunks/caf3b3e9a71f54ed.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null
