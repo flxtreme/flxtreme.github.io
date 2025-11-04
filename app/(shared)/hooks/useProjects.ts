@@ -165,6 +165,15 @@ export function useProjects() {
       stacks: ["NextJS", "pokemon-app-engine"],
       private: false,
     },
+    {
+      url: "https://thebabybuzz.store",
+      image: "/preview/preview-thebabybuzz.png",
+      title: "thebabybuzz.store",
+      description:
+        "A website to showcase affilate products and blogs.",
+      stacks: ["NextJS"],
+      private: false,
+    },
   ], []);
 
   

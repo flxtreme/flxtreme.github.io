@@ -8,8 +8,8 @@ import "highlight.js/styles/github-dark.css";
 interface MarkdownBlogProps {
   mdPath: string;
   className?: string;
+  onRenderUpdate?: (content: string) => void;
 }
-
 
 /**
  * MarkdownBlog
@@ -17,7 +17,7 @@ interface MarkdownBlogProps {
  * Renders a markdown file as a styled blog post with syntax highlighting,
  * line numbers, and copy-to-clipboard support for each code block.
  */
-export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
+export default function MarkdownBlog({ mdPath, className, onRenderUpdate }: MarkdownBlogProps) {
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,37 +48,10 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
 
   /** Handle internal link clicks (prevent page refresh) */
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest("a") as HTMLAnchorElement | null;
-      if (!link) return;
-
-      // Only intercept internal links (within same domain or anchor links)
-      const isInternal =
-        link.href.startsWith(window.location.origin) || link.getAttribute("href")?.startsWith("#");
-
-      if (isInternal) {
-        e.preventDefault();
-        const href = link.getAttribute("href");
-
-        // Handle anchor links (e.g., #section-title)
-        if (href?.startsWith("#")) {
-          const targetElement = document.querySelector(href);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-            history.replaceState(null, "", href); // update URL hash without reload
-          }
-        } else if (href) {
-          // Handle internal blog navigation
-          window.history.pushState({}, "", href);
-        }
-      }
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [content]);
-
+    if (content) {
+      onRenderUpdate?.(content);
+    }
+  }, [content, onRenderUpdate]);
 
   /** Parse markdown content into styled HTML */
   const parseMarkdown = (md: string): string => {
@@ -97,7 +70,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .split(/\n/)
         .map(
           (line, i) =>
-            `<div class="table-row"><span class="table-cell text-right select-none pr-4 text-slate-500 dark:text-slate-400">${
+            `<div class="table-row"><span class="table-cell text-right select-none md:text-base text-xs pr-4 text-slate-500 dark:text-slate-400">${
               i + 1
             }</span><span class="table-cell">${line || "&nbsp;"}</span></div>`
         )
@@ -108,7 +81,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         <button class="copy-btn absolute top-2 right-2 text-xs bg-slate-700/80 text-white px-2 py-1 rounded transition hover:bg-slate-600">
           Copy
         </button>
-        <pre class="border-l-4 shadow-md border-gray-400 dark:border-purple-400 overflow-x-auto my-6"><code class="hljs language-${lang} bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-100 table border-separate border-spacing-x-2">${numbered}</code></pre>
+        <pre class="border-l-4 shadow-md border-gray-400 dark:border-purple-400 overflow-x-auto my-6"><code class="hljs language-${lang} bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-100 table border-separate border-spacing-x-2 text-xs md:text-base pr-2!  md:pr-4!">${numbered}</code></pre>
       </div>`;
       codeBlocks.push(block);
       return `\n___CODE_BLOCK_${codeBlocks.length - 1}___\n`;
@@ -118,7 +91,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
     const inlineCodes: string[] = [];
     html = html.replace(/`([^`\n]+)`/g, (match, code) => {
       const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      const inline = `<code class="bg-slate-200 shadow-sm dark:bg-slate-800 px-1 py-0.5 rounded text-sm font-mono text-orange-600 dark:text-purple-400">${escaped}</code>`;
+      const inline = `<code class="bg-slate-200 shadow-sm dark:bg-slate-800 px-1 py-0.5 rounded font-mono text-orange-600 dark:text-purple-400">${escaped}</code>`;
       inlineCodes.push(inline);
       return `___INLINE_CODE_${inlineCodes.length - 1}___`;
     });
@@ -137,7 +110,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .replace(/[^\w\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
-      return `<h2 id="${id}" class="font-poppins text-3xl font-bold mt-10 mb-5 scroll-mt-24">${title}</h2>`;
+      return `<h2 id="${id}" class="font-poppins text-3xl font-bold mt-10 mb-4 scroll-mt-24">${title}</h2>`;
     });
 
     html = html.replace(/^# (.*$)/gim, (_, title) => {
@@ -145,7 +118,7 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
         .replace(/[^\w\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
-      return `<h1 id="${id}" class="font-poppins text-4xl font-bold mt-12 mb-6 scroll-mt-24">${title}</h1>`;
+      return `<h1 id="${id}" class="font-poppins text-4xl font-bold mt-12 mb-4 scroll-mt-24">${title}</h1>`;
     });
     
     // Bold & Italic
@@ -265,7 +238,6 @@ export default function MarkdownBlog({ mdPath, className }: MarkdownBlogProps) {
 
     if (inParagraph) processed.push("</p>");
     html = processed.join("\n");
-
 
     html = processed.join("\n");
     html = html.replace(/___INLINE_CODE_(\d+)___/g, (_, i) => inlineCodes[i]);

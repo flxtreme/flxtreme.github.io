@@ -1,7 +1,7 @@
 "use client";
 
 import { useProjects } from "@/app/(shared)/hooks/useProjects";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { FiEye, FiEyeOff, FiLock } from "react-icons/fi";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
