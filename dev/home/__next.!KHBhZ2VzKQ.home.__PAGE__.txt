@@ -1,10 +1,10 @@
 1:"$Sreact.fragment"
-2:I[47257,["/dev/_next/static/chunks/d16c3e07d84e98a8.js"],"ClientPageRoot"]
-3:I[1813,["/dev/_next/static/chunks/27d4a8dcd2ac96c5.js","/dev/_next/static/chunks/706bcb94ddd847b0.js","/dev/_next/static/chunks/759fc64b3c7c4753.js","/dev/_next/static/chunks/309ecf5cd9ab37d1.js","/dev/_next/static/chunks/3ee44ef3e0472e25.js"],"default"]
-6:I[97367,["/dev/_next/static/chunks/d16c3e07d84e98a8.js"],"OutletBoundary"]
+2:I[47257,["/_next/static/chunks/d16c3e07d84e98a8.js"],"ClientPageRoot"]
+3:I[1813,["/_next/static/chunks/27d4a8dcd2ac96c5.js","/_next/static/chunks/706bcb94ddd847b0.js","/_next/static/chunks/759fc64b3c7c4753.js","/_next/static/chunks/309ecf5cd9ab37d1.js","/_next/static/chunks/3ee44ef3e0472e25.js"],"default"]
+6:I[97367,["/_next/static/chunks/d16c3e07d84e98a8.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-:HL["/dev/_next/static/chunks/9e31d20932476e36.css","style"]
-0:{"buildId":"BWjtgt0kktvqoKbZmaHM4","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/dev/_next/static/chunks/9e31d20932476e36.css","precedence":"next"}],["$","script","script-0",{"src":"/dev/_next/static/chunks/3ee44ef3e0472e25.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+:HL["/_next/static/chunks/9e31d20932476e36.css","style"]
+0:{"buildId":"uWVLNYfbmvqRLI2GRZ_rY","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/9e31d20932476e36.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3ee44ef3e0472e25.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
