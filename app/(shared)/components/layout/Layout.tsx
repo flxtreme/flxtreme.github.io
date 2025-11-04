@@ -51,28 +51,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </Header>
       <div className="absolute left-0 right-0 top-0 bottom-0">
-        {/* <LiquidEther
-          key={theme}
-          colors={
-            theme === 'dark'
-              ? ['#5227FF', '#FF9FFC', '#B19EEF'] // your dark mode colors
-              : ['#f8f9fa', '#e9ecef', '#dee2e6']
-          }
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-        /> */}
         <DotGrid
           dotSize={4}
           gap={24}
@@ -81,11 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ? "#333"
               : "#D0D0D0"
           }
-          activeColor={
-            theme === 'dark'
-              ? "#C785FE"
-              : "#F8C558"
-          }
+          activeColor={"#C785FE"}
           proximity={100}
           shockRadius={100}
           shockStrength={100}

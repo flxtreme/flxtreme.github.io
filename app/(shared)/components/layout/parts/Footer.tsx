@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
               I turn caffeine ☕ and code into clean, responsive apps. Available for part-time work—let's build something awesome together. 💻
             </p>
             <div className="flex items-center gap-2 text-sm opacity-70">
-              <IoCodeOutline size={16} className="text-orange-400 dark:text-purple-400" />
+              <IoCodeOutline size={16} className="text-purple-400" />
               <span>Built with Next.js & React</span>
             </div>
           </div>
@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
                 <a
                   key={index}
                   href={link.href}
-                  className="text-sm opacity-70 hover:opacity-100 hover:text-orange-500 dark:hover:text-purple-400 transition-all duration-200 w-fit"
+                  className="text-sm opacity-70 hover:opacity-100 hover:hover:text-purple-400 transition-all duration-200 w-fit"
                 >
                   {link.label}
                 </a>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
                   key={index}
                   title={social.label}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-purple-400 hover:border-orange-400 dark:hover:border-purple-400 hover:scale-110 transition-all duration-200"
+                  className="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-purple-400 hover:border-purple-400 hover:scale-110 transition-all duration-200"
                 >
                   {social.icon}
                 </button>
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
             </div>
             <a
               href="mailto:flxrzjr@gmail.com"
-              className="inline-flex items-center gap-2 text-sm font-medium text-orange-500 dark:text-purple-400 hover:underline"
+              className="inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:underline"
             >
               <IoMail size={16} />
               flxrzjr@gmail.com

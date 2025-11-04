@@ -1,18 +1,8 @@
-### Overview
+# Optimizing APIs: Promise.all, Preloading & Caching Config
+
+Learn how to dramatically improve your service performance using `Promise.all` for parallel API requests, intelligent preloading patterns, and effective caching configurations.
 
 When building backend APIs, performance optimization can dramatically improve your application's responsiveness. Slow, sequential operations and repeated config fetches lead to sluggish APIs and poor user experience. In this post, I'll show you how to optimize your Node.js APIs using `Promise.all` for parallel operations, preloading configurations, and implementing effective server-side caching.
-
-### Table of Contents
-└── [Use of Promise.all](#use-of-promiseall)  
-          ├── [The Problem: Sequential API Calls](#the-problem-sequential-api-calls)  
-          ├── [The Solution: Promise.all](#the-solution-promiseall)  
-          └── [Handling Errors Gracefully](#handling-errors-gracefully)  
-└── [Preloading & Caching Configurations](#preloading-caching-configurations)  
-          ├── [Preload + Cache](#preload-cache)  
-          ├── [Server-Side Caching](#server-side-caching)  
-          ├── [Multi-Level Caching Strategy](#multi-level-caching-strategy)  
-└── [Key Takeaways](#key-takeaways)
-
 
 ---
 

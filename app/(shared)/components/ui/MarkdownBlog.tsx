@@ -91,7 +91,7 @@ export default function MarkdownBlog({ mdPath, className, onRenderUpdate }: Mark
     const inlineCodes: string[] = [];
     html = html.replace(/`([^`\n]+)`/g, (match, code) => {
       const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      const inline = `<code class="bg-slate-200 shadow-sm dark:bg-slate-800 px-1 py-0.5 rounded font-mono text-orange-600 dark:text-purple-400">${escaped}</code>`;
+      const inline = `<code class="bg-slate-200 shadow-sm dark:bg-slate-800 px-1 py-0.5 rounded font-mono text-purple-400">${escaped}</code>`;
       inlineCodes.push(inline);
       return `___INLINE_CODE_${inlineCodes.length - 1}___`;
     });
@@ -127,10 +127,10 @@ export default function MarkdownBlog({ mdPath, className, onRenderUpdate }: Mark
     
     // Images & Links
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" class="max-w-full h-auto rounded-lg my-6 shadow-lg" />');
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="text-orange-400 dark:text-purple-400 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>');
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="text-purple-400 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>');
     
     // Blockquotes
-    html = html.replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-orange-400 dark:border-purple-400 pl-4 italic my-4 opacity-80">$1</blockquote>');
+    html = html.replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-purple-400 pl-4 italic my-4 opacity-80">$1</blockquote>');
     
     // Lists - Process line by line to handle nesting
     const listLines = html.split('\n');
@@ -319,8 +319,8 @@ export default function MarkdownBlog({ mdPath, className, onRenderUpdate }: Mark
         "prose prose-slate dark:prose-invert max-w-none",
         "prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-slate-100",
         "prose-p:text-slate-700 dark:prose-p:text-slate-300",
-        "prose-a:text-orange-400 dark:prose-a:text-purple-400",
-        "prose-code:text-orange-600 dark:prose-code:text-purple-400",
+        "prose-a:prose-a:text-purple-400",
+        "prose-code:prose-code:text-purple-400",
         "prose-img:rounded-lg prose-img:shadow-lg",
         className
       )}

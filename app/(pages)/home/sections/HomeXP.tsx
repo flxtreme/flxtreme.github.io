@@ -41,7 +41,7 @@ export default function HomeXP() {
               <span className="text-sm font-medium">Internal projects:</span>
               <button
                 onClick={() => setShowPrivate(!showPrivate)}
-                className="flex items-center gap-2 h-8 px-4 text-xs font-medium bg-linear-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 dark:from-purple-500 dark:to-purple-600 dark:hover:from-purple-600 dark:hover:to-purple-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="flex items-center gap-2 h-8 px-4 text-xs font-medium bg-linear-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 {showPrivate ? (
                   <>
@@ -73,7 +73,7 @@ export default function HomeXP() {
                   <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-br from-slate-200 via-slate-300 to-slate-200 dark:from-slate-700 dark:via-slate-800 dark:to-slate-700 text-slate-700 dark:text-slate-300">
                     <div className="relative">
                       <FiLock className="text-6xl mb-4 opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                      <div className="absolute inset-0 blur-xl bg-orange-400/20 dark:bg-purple-400/20 animate-pulse" />
+                      <div className="absolute inset-0 blur-xl bg-purple-400/20 animate-pulse" />
                     </div>
                     <p className="text-sm font-medium opacity-50 px-4 text-center">
                       Restricted Preview
@@ -92,7 +92,7 @@ export default function HomeXP() {
 
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-gray-800/40 to-transparent opacity-100 group-hover:opacity-0 transition-all duration-500 flex flex-col justify-end p-5 text-white">
                   {project.private && (
-                    <div className="absolute right-4 top-4 px-3 py-1.5 bg-orange-500/90 dark:bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
+                    <div className="absolute right-4 top-4 px-3 py-1.5 bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
                       <FiLock className="text-sm" />
                       Internal
                     </div>

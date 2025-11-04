@@ -68,8 +68,8 @@ export const Nav: React.FC<NavProps> = ({ className, ...props }) => {
               className={cn(
                 "transition-colors duration-200",
                 isActive
-                  ? "text-orange-500 dark:text-purple-400 drop-shadow-[0_0_6px_#fb923c] dark:drop-shadow-[0_0_6px_#c084fc]"
-                  : "text-neutral-700 dark:text-neutral-300 group-hover:text-orange-400 dark:group-hover:text-purple-400 group-hover:drop-shadow-[0_0_6px_#fb923c] dark:group-hover:drop-shadow-[0_0_6px_#c084fc]"
+                  ? "text-purple-400 drop-shadow-[0_0_6px_#fb923c] dark:drop-shadow-[0_0_6px_#c084fc]"
+                  : "text-neutral-700 dark:text-neutral-300 group-hover:group-hover:text-purple-400 group-hover:drop-shadow-[0_0_6px_#fb923c] dark:group-hover:drop-shadow-[0_0_6px_#c084fc]"
               )}
             >
               <Icon size={20} strokeWidth={1.5} />
@@ -89,8 +89,8 @@ export const Nav: React.FC<NavProps> = ({ className, ...props }) => {
                 "overflow-hidden whitespace-nowrap text-sm",
                 "transition-colors duration-200",
                 isActive
-                  ? "text-orange-600 dark:text-purple-400"
-                  : "text-neutral-700 dark:text-neutral-300 group-hover:text-orange-400 dark:group-hover:text-purple-400"
+                  ? "text-purple-400"
+                  : "text-neutral-700 dark:text-neutral-300 group-hover:group-hover:text-purple-400"
               )}
             >
               {item.label}

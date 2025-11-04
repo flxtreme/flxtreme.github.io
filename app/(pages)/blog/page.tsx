@@ -22,7 +22,7 @@ export default function BlogPage() {
           "container container-height flex flex-col items-start justify-center"
         )}
       >
-        <div className="flex items-center gap-2 mb-4 text-orange-400 dark:text-purple-400">
+        <div className="flex items-center gap-2 mb-4text-purple-400">
           <LuGlobe className="text-xl" />
           <span className="font-medium uppercase tracking-widest">My Blog</span>
         </div>
@@ -36,7 +36,7 @@ export default function BlogPage() {
             <article
               onClick={() => router.push(`/blog/${blog.slug}`)}
               key={index}
-              className="p-6 border border-transparent hover:border-orange-400 dark:hover:border-purple-400 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="p-6 border border-transparent hover:border-purple-400 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <time className="block text-sm opacity-50 mb-2">{blog.date}</time>
               <h2 className="text-lg font-semibold mb-3">{blog.title}</h2>

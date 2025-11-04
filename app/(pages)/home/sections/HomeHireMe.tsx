@@ -32,7 +32,7 @@ export default function HomeHireMe() {
     <section id="hire-me" className="relative">
       <div className="container container-height flex flex-col items-center justify-center">
         <div className="text-center mb-10 md:mb-14 px-4">
-          <h2 className="font-poppins text-3xl md:text-4xl xl:text-5xl font-medium mb-3 text-orange-300 dark:text-purple-400">
+          <h2 className="font-poppins text-3xl md:text-4xl xl:text-5xl font-medium mb-3 text-purple-400">
             Ready to Work Together?
           </h2>
           <p className="text-sm md:text-lg xl:text-xl opacity-70 max-w-2xl mx-auto leading-relaxed">
@@ -53,7 +53,7 @@ export default function HomeHireMe() {
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="font-poppins text-lg md:text-xl font-semibold mb-1 text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-purple-400 transition-colors">
+                  <h3 className="font-poppins text-lg md:text-xl font-semibold mb-1 text-gray-900 dark:text-white group-hover:text-purple-400 transition-colors">
                     {link.title}
                   </h3>
                   <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
@@ -61,7 +61,7 @@ export default function HomeHireMe() {
                   </p>
                 </div>
 
-                <div className="text-orange-400 dark:text-purple-400 group-hover:translate-x-1 transition-transform duration-300 hidden sm:flex">
+                <div className="text-purple-400 group-hover:translate-x-1 transition-transform duration-300 hidden sm:flex">
                   <IoArrowForward />
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function HomeHireMe() {
             Or just shoot me an email at{' '}
             <a 
               href="mailto:flxrzjr@gmail.com" 
-              className="text-orange-500 dark:text-purple-400 hover:underline font-medium"
+              className="text-purple-400 hover:underline font-medium"
             >
               flxrzjr@gmail.com
             </a>

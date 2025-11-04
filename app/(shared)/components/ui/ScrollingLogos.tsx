@@ -59,7 +59,7 @@ export default function ScrollingLogos({
               animationDelay: `${i * 0.2}s`,
             }}
           >
-            <div className="text-8xl mb-4 text-orange-400 dark:text-purple-400 transition-transform duration-300 hover:scale-110">
+            <div className="text-8xl mb-4 text-purple-400 transition-transform duration-300 hover:scale-110">
               {item.icon}
             </div>
             <span className="text-base font-medium opacity-70">{item.title}</span>

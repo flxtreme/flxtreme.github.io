@@ -125,16 +125,15 @@ const SkillCard = ({
       <div
         className={cn(
           "relative h-full w-full rounded-2xl p-6 flex flex-col justify-center items-center",
-          "bg-white/80 dark:bg-slate-900/80 shadow-lg shadow-black/5 dark:shadow-none",
-          "overflow-hidden transition-all duration-300 border-2 border-gray-10 dark:border-gray-100/20",
-          "backdrop-blur-xl backdrop-saturate-150"
+          "bg-white/80 dark:bg-slate-900/80",
+          "overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-200/10"
         )}
       >
         {/* Icon */}
         <div className="relative z-10 flex justify-center mb-3 md:mb-4 items-center">
           <Icon
             size={iconSize}
-            className="text-orange-500 dark:text-purple-400 transition-transform duration-300 group-hover/skill:scale-110 drop-shadow-lg"
+            className="text-purple-400 transition-transform duration-300 group-hover/skill:scale-110 drop-shadow-lg"
           />
         </div>
 
@@ -170,7 +169,7 @@ const SkillCard = ({
               "transition-transform duration-300 group-hover/skill:scale-110"
             )}
           >
-            <HiChevronLeft size={16} className="md:size-6 group-hover/skill:dark:text-purple-500 group-hover/skill:text-orange-500" />
+            <HiChevronLeft size={16} className="md:size-6 group-hover/skill:text-purple-500" />
           </div>
         ))}
       </div>

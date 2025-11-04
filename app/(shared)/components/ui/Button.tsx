@@ -64,13 +64,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   const solid = cn(
     "relative overflow-hidden group",
-    isDark
-      ? "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white"
-      : "bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white",
+    "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white",
     "before:absolute before:inset-0 before:bg-gradient-to-r before:-z-10",
-    isDark
-      ? "before:from-purple-400 before:to-purple-500"
-      : "before:from-orange-300 before:to-orange-400",
+    "before:from-purple-400 before:to-purple-500",
     "before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
     "hover:shadow-xl hover:scale-105 active:scale-95"
   );
