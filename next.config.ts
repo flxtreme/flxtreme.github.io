@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/v1';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/flxtreme.github.io-v1';
 
 const nextConfig: NextConfig = {
   /* config options here */
