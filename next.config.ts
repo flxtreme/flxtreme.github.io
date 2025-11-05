@@ -5,7 +5,6 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/flxtreme.github.io-v1';
 const nextConfig: NextConfig = {
   /* config options here */
   basePath: basePath,
-  assetPrefix: basePath,
   sassOptions: {
     implementation: 'sass-embedded',
   },
